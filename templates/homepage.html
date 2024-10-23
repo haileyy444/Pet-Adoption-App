@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Pet Adoption Agency {% endblock %}
+   
+{% block content %}
+
+    <h1>Pets</h1>
+{%if pets %}
+    {% for pet in pets %}
+        <div class="col-sm-10 col-6 list-group-item">
+        
+            <li class=" mt-3 row" >
+                {%if pet.photo_url %}
+                <div class="col-sm-2 col-6 align">
+                    <img class="img-fluid" src="{{pet.photo_url}}" alt="{{pet.name}} ">
+                </div>
+                {% endif %}
+                <div class="col-sm-10 col-12 ">
+                    <h2 class="mt-3"><a href="/{{pet.id}}">{{pet.name}}</a></h2>
+                    <h5>{{pet.species}} </h5>
+                    <h5>Age: {{pet.age}}</h5>
+                 
+                
+                    {% if pet.available =="adoptable" %}
+                        <h5 style="color: green;">AVAILABLE</h5>
+                    {% else %}
+                        <h5 style="color: red;">UNAVAILABLE</h5>
+                    {% endif %}
+                </div>
+            </li>
+         </div>
+      {% endfor %}
+ {% else %}
+    <p>No Pets</p>    
+{% endif %}
+        <p class="mt-3">
+            <a class="btn btn-sm btn-secondary" href="/add">Add Pet</a>
+        </p>
+  
+              
+             
+{% endblock %}

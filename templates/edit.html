@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Pet {% endblock %}
+   
+{% block content %}
+    <h1>Edit {{pet.name}}</h1>
+
+
+    {% if pet.photo_url %}
+        <img src="{{pet.photo_url}}" class="img-fluid">
+    {% endif %}
+
+    <h2>Update</h2>
+    <form method="POST">
+        {% include "_form.html" %}
+        
+        <br>
+
+        <div class="text-center">
+            <div class="d-inline-flex justify-content-center ">
+                <a href="/{{pet.id}}" class="btn btn-outline-info">Cancel</a>
+                <button type="submit" class="btn btn-success">Update</button> 
+                <a href="/{{pet.id}}/delete" class="btn btn-danger">Delete Pet</a>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}
+
+
+
+<!-- 
+<div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <h1>{{pet.name}}</h1>
+        </div>
+</div>
+
+
+<div class="form-group row mt-3">
+    <label for="species" class="col-sm-2 col-form-label">Species</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="species" name="species" > 
+                <option value="dog"{% if pet.species == 'dog' %} selected {% endif %}>Dog</option> 
+                <option value="cat"{% if pet.species == 'cat' %} selected {% endif %}>Cat</option> 
+                <option value="horse"{% if pet.species == 'horse' %} selected {% endif %}>Horse</option>
+                <option value="rabbit"{% if pet.species == 'rabbit' %} selected {% endif %}>Rabbit</option> 
+            </select>
+        </div>
+</div>
+
+<div class="form-group row">
+    <label for="photo_url" class="col-sm-2 col-form-label">Photo URL</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="photo_url" name="photo_url" value="{{pet.photo_url}}">
+        </div>
+</div>
+
+<div class="form-group row">
+    <label for="notes" class="col-sm-2 col-form-label">Notes</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="notes" name="notes" >{{pet.notes}}</textarea>
+        </div>
+</div>
+            
+
+<div class="form-group row">
+    <label for="available" class="col-sm-2 col-form-label">Availibility</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="available" name="available" > 
+                <option value="unadoptable" {% if pet.available == 'unadoptable' %} selected {% endif %}>Unadoptable</option>
+                <option value="adoptable" {% if pet.available == 'adoptable' %} selected {% endif %}>Adoptable</option>
+            </select>
+        </div>
+</div> -->
